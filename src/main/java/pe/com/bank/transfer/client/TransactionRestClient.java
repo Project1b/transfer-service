@@ -19,7 +19,7 @@ public class TransactionRestClient {
     }
 
     public Mono<TransactionDTO> createTransactionA(TransactionDTO transactionDTO){
-        var url = transactionUrl.concat("/transaction");
+        var url = transactionUrl.concat("/v1/createTransaction");
         return webClient.post()
                 .uri(url)
                 .body(Mono.just(transactionDTO), TransactionDTO.class)

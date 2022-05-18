@@ -12,19 +12,14 @@ public class AccountRestClient {
     private WebClient webClient;
 
     @Value("${restClient.accountUrl}")
-    private String AccountUrl;
+    private String accountUrl;
 
-    public Mono<AccountDTO> retrieveAccountA(String accountId){
-        var url = AccountUrl.concat("/{id}");
-        return webClient
-                .get()
-                .uri(url, accountId)
-                .retrieve()
-                .bodyToMono(AccountDTO.class);
+    public AccountRestClient(WebClient webClient) {
+        this.webClient = webClient;
     }
 
     public Mono<AccountDTO> updateAccountA(AccountDTO accountDTO, String accountId) {
-        var url = AccountUrl.concat("/update/{id}");
+        var url = accountUrl.concat("/update/{id}");
         return webClient
                 .put()
                 .uri(url, accountId)
@@ -32,4 +27,14 @@ public class AccountRestClient {
                 .retrieve()
                 .bodyToMono(AccountDTO.class);
     }
+
+    public Mono<AccountDTO> retrieveAccountA(String accountId){
+        var url = accountUrl.concat("/accounts/{id}");
+        return webClient
+                .get()
+                .uri(url, accountId)
+                .retrieve()
+                .bodyToMono(AccountDTO.class);
+    }
+
 }
