@@ -26,5 +26,4 @@ public class TransactionRestClient {
                 .retrieve()
                 .bodyToMono(TransactionDTO.class);
     }
-
 }

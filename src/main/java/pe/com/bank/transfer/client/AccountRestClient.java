@@ -29,12 +29,11 @@ public class AccountRestClient {
     }
 
     public Mono<AccountDTO> retrieveAccountA(String accountId){
-        var url = accountUrl.concat("/accounts/{id}");
+        var url = accountUrl.concat("/{id}");
         return webClient
                 .get()
                 .uri(url, accountId)
                 .retrieve()
                 .bodyToMono(AccountDTO.class);
     }
-
 }
