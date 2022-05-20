@@ -11,7 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class TransactionDTO {
 
-    private String accountNumber;
+    private String accountId;
     private Double amount;
     private Date date;
     private String type;
